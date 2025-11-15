@@ -6,186 +6,182 @@ alwaysApply: false
 
 # MotherDuck Style Rules
 
-## Brand Voice
+## Brand Voice & Atmosphere
 
-- Embrace a playful-yet-professional tone: vibrant colors, sharp corners (no rounded geometry), duck mascots for delight.
-- Prioritize clarity and friendliness over minimalism; avoid stark monochrome looks.
-- Reserve illustrated ducks or Lottie animations for hero areas, empty states, and loading indicators.
+- Hero copy is loud and uppercase, but still conversational; keep lines short and confident (“Making Big Data Feel Small”).
+- The tone mixes retro-instrument-panel precision with playful duck humor. Use witty subheads (“FINALLY: A database you don’t hate”) plus practical supporting copy.
+- Surface duck mascots, doodles, and ISO-style tiles at major breakpoints (hero, use cases, testimonials). Keep secondary sections copy-first with simple iconography.
+- Always pair visual whimsy with rigid structure: straight rules, graph-paper backgrounds, exact spacing, and obvious strokes.
+
+## Shell & Layout Basics
+
+- Root background is a warm cream `rgb(244 239 234 / 1)` (#F4EFEA). Never ship pure white canvases; all pages start here.
+- Header + eyebrow values come from live DOM tokens: `--header-mobile: 70px`, `--header-desktop: 90px`, `--eyebrow-mobile: 70px`, `--eyebrow-desktop: 55px`.
+- The eyebrow banner is always sunbeam yellow with uppercase CTA text, spanning edge-to-edge and pinned above navigation.
+- Section stacks alternate between cream, sky-blue washes, and gridded cards to keep rhythm. Use wavy SVG separators or simple 2px black rules when switching backgrounds.
 
 ## Color System
 
 ```css
 :root {
-  --md-watermelon: #FF7169;   /* primary CTA, key highlights */
-  --md-sky: #6FC2FF;          /* links, interactive states */
-  --md-garden: #16AA98;       /* success & positive banners */
-  --md-sun: #FFDE02;          /* attention-grabbing badges */
-  --md-neutral-900: #383838;  /* primary text */
-  --md-neutral-700: #595959;  /* secondary text */
-  --md-neutral-300: #B9B9B9;  /* borders, dividers */
-  --md-neutral-100: #F3F3F3;  /* page background */
-  --md-white: #FFFFFF;        /* cards, reverse text */
-  --md-black: #000000;        /* bold borders */
-  --md-gradient-primary: linear-gradient(135deg, #FF7169 0%, #FFDE02 100%);
-  --md-gradient-sky: linear-gradient(135deg, #6FC2FF 0%, #16AA98 100%);
+  --md-cream: #F4EFEA;        /* page shell */
+  --md-sunbeam: #FFDE00;      /* eyebrow, promo strips */
+  --md-sunbeam-dark: #E3C300; /* hover/pressed */
+  --md-sky: #6FC2FF;          /* primary CTA fill */
+  --md-sky-strong: #2BA5FF;   /* focus rings, active inputs */
+  --md-soft-blue: #EBF9FF;    /* secondary sections */
+  --md-cloud: #FFFFFF;        /* cards & quotes */
+  --md-fog: #F8F8F7;          /* form fills */
+  --md-ink: #383838;          /* primary text */
+  --md-slate: #A1A1A1;        /* secondary text */
+  --md-graphite: #000000;     /* structural strokes */
+  --md-shadow: rgba(0, 0, 0, 0.08); /* hover shadows */
+  --md-grid-line: #E4D6C3;    /* graph-paper overlays */
 }
 ```
 
-- Keep contrast ≥ 4.5:1 for body text; darken saturation by 10% on hover/focus.
-- Never mix new brand colors without approval; derive tints via opacity instead.
-- **Page background MUST be `#F3F3F3` (--md-neutral-100)**.
+- Minimum text contrast: 5:1 on cream/blue, 7:1 when text sits on sunbeam or sky backgrounds.
+- Sunbeam and sky saturations deepen ~10% on hover; darker states must still contrast with graphite outlines.
+- Use opacity (not new hues) for muted variants. `rgba(111, 194, 255, 0.4)` is the current tinted highlight.
+- Card borders, inputs, and CTA outlines stay `2px` graphite; only divider rules can drop to `1px`.
 
 ## Typography
 
 ```css
-font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
-font-family-mono: "Aeonik Mono", "SFMono-Regular", Menlo, monospace;
+:root {
+  --font-family-primary: "Aeonik Mono", "Aeonik Fono", "Inter", sans-serif;
+  --font-family-alt: "Aeonik Fono", "Aeonik Mono", sans-serif;
+  --font-hero: 72px/86px 0.02em uppercase;
+  --font-h2: 32px/45px uppercase;
+  --font-h3: 18px/25px uppercase;
+  --font-body: 15px/22px normal-case;
+  --font-ui: 14px/20px uppercase for badges & nav;
+  --font-eyebrow: 12px/16px uppercase;
+}
 ```
+
+- Primary copy face is Aeonik Mono; Aeonik Fono handles dense body paragraphs and pull quotes.
+- Headings are uppercase with 1–2px tracking. Body copy remains sentence case with natural spacing.
+- Keep heading line-height tight (1.18–1.25). Body line-height stays 1.45–1.6 for readability on cream backgrounds.
+- Use Mono Bold (700) for stat callouts, CTA counts, and eyebrow labels; everything else stays regular (400).
+
+## Spacing & Rhythm
 
 ```css
---font-hero: 64px;
---font-h1: 48px;
---font-h2: 36px;
---font-h3: 24px;
---font-body: 16px;
---font-small: 14px;
---font-tiny: 12px;
+:root {
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 40px;
+  --space-9: 48px;
+  --space-10: 64px;
+  --space-11: 80px;
+  --space-12: 96px;
+  --space-section: 120px;
+}
 ```
 
-- Use 1.2–1.35 line-height for headings, 1.6 for body.
-- All CTAs use font-weight 600 with uppercase avoided; rely on color contrast instead.
+- Hero stack = `padding-block: var(--space-section)` with CTA row gaps of `var(--space-6)`.
+- Feature grids keep `var(--space-7)` between tiles and `var(--space-9)` between heading, copy, and CTAs.
+- Testimonials and Duckling cards carry 32px interior padding with 24px gaps between icon, heading, and paragraph.
+- Mobile keeps the same ratios via `padding-block: clamp(48px, 10vw, 120px)`; never compress below 48px.
 
-## Spacing & Layout
+## Shape Language & Surfaces
 
-```css
---space-xs: 4px;
---space-sm: 8px;
---space-md: 16px;
---space-lg: 24px;
---space-xl: 32px;
---space-2xl: 48px;
---space-3xl: 64px;
---space-4xl: 96px;
-```
-
-- Section rhythm: 96px vertical gaps, 48px between content blocks, 24px between related elements.
-- Container max-width 1280px; paddings 24px (mobile) / 48px (desktop).
-- Grid defaults: 12 columns, 24px gutters, breakpoints at 640px and 1024px.
-- **Consistent spacing**: Use spacing tokens consistently. Avoid arbitrary values.
-
-## Shape Language
-
-```css
---border-thin: 1px solid var(--md-neutral-300);  /* default card borders */
---border-bold: 3px solid var(--md-black);          /* emphasis borders */
---shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
---shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
---shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.15);
---shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.2);
-```
-
-- **NO rounded corners**: All elements use `border-radius: 0` or no border-radius.
-- Default card treatment: white background, **no border-radius**, 32px padding, thin border `1px solid var(--md-neutral-300)`, `--shadow-md`.
-- **Bold borders**: Use `3px solid var(--md-black)` for emphasis (e.g., highlighted cards, important sections).
-- Buttons: **No rounded corners**; use sharp rectangular shapes with `border-radius: 0`.
+- Corners are micro-rounded at `2px`. Only doodle tabs and wave masks introduce curves.
+- Structural elements keep 2px graphite outlines: cards, inputs, CTA pills, checkboxes, and nav dropdowns.
+- Graph-paper sections use `repeating-linear-gradient` backgrounds with `var(--md-grid-line)` every ~40px on cream.
+- Hover depth comes from translation (`transform: translate(7px, -7px)`) plus optional `box-shadow: 0 7px 0 var(--md-graphite)`.
+- Divider waves match adjacent section colors and stay ≤ 48px tall.
 
 ## Components
 
-### Buttons
+### Buttons & CTA Links
 
-```css
-.btn-primary {
-  background: var(--md-watermelon);
-  color: var(--md-white);
-  padding: 12px 24px;
-  border-radius: 0;
-  border: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
+- **Primary CTA** (`Try 21 Days Free`, `Start Free`)
+  - `background: var(--md-sky)`, `color: var(--md-ink)`, `border: 2px solid var(--md-ink)`, `border-radius: 2px`.
+  - Padding `16px 22px`; uppercase text with ~0.3px tracking.
+  - Transition: `transform 120ms ease-in-out, box-shadow 120ms ease`.
+  - Hover: `transform: translate(7px, -7px)`; keep color + border unchanged.
+  - Focus: `border-color: var(--md-sky-strong)`; no glow.
+- **Secondary CTA** (Learn More / Book a Demo) stays text-only with inline arrow icons, `letter-spacing: 0.32px`, underline on hover.
+- Header CTAs reuse the same rules; `LOG IN` is text-only, while `START FREE` mirrors the primary CTA at `12px 18px`.
 
-.btn-secondary {
-  background: transparent;
-  color: var(--md-sky);
-  border: 2px solid var(--md-sky);
-  padding: 10px 22px;
-  border-radius: 0;
-}
-```
+### Inputs & Form Controls
 
-- Hover state: translateY(-2px) and deepen color by ~10%.
-- Focus state: add `0 0 0 3px rgba(111, 194, 255, 0.2)` ring.
-- **No rounded corners** on any buttons.
+- Inputs sit on fog backgrounds with `border: 2px solid var(--md-ink)` and `border-radius: 2px`.
+- Padding: `16px 40px 16px 24px` to account for inline icons/labels.
+- Focus switches the border to `var(--md-sky-strong)` with no box shadow.
+- Checkbox tiles are 24px squares with 2px strokes, duck-foot icons, and `gap: var(--space-4)` between box and label.
 
-### Inputs
+### Cards, Tiles & Feature Rails
 
-```css
-.md-input {
-  border: 1px solid var(--md-neutral-300);
-  border-radius: 0;
-  padding: 12px 16px;
-  background: var(--md-white);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
+- Default card: white background, `padding: var(--space-8)`, `display: flex` column with `gap: var(--space-5)`, `border: 2px solid var(--md-ink)`.
+- Highlight cards (testimonials) add a yellow badge tab or duck icon anchored to the top-left with `position: absolute`.
+- Duckling-size cards stack vertically, consistent width, and include 120px illustration blocks above headings.
+- Ecosystem matrices use 2-column grids (desktop) with `gap: var(--space-7)`; collapse to single column below 640px.
 
-.md-input:focus {
-  border-color: var(--md-sky);
-  box-shadow: 0 0 0 3px rgba(111, 194, 255, 0.1);
-  outline: none;
-}
-```
+### Navigation & Eyebrow
 
-- Error state uses `var(--md-watermelon)` border plus subtle shake animation ≤ 250ms.
-- **No rounded corners**.
+- Eyebrow remains `background: var(--md-sunbeam)` with uppercase 14px text; include a link plus CTA chip.
+- Header uses accordion-like buttons with chevrons. Dropdowns inherit cream backgrounds and 2px outlines.
+- Keep header pinned, full-width, and opaque; on scroll, compress padding but never introduce translucency.
 
-### Cards & Surfaces
+### Quote & Testimonial Blocks
 
-- Layout cards with `display: flex` or `grid` to keep internal spacing consistent.
-- Elevate interactive cards on hover: apply `--shadow-lg` and `transform: translateY(-4px)`.
-- Always include generous white space and optionally a corner badge using `--md-sun`.
-- **Default card**: white background, **no border-radius**, `1px solid var(--md-neutral-300)` border, 32px padding.
-- **Bold border cards**: Use `3px solid var(--md-black)` for emphasis (e.g., highlighted/featured cards).
+- White cards, 2px outline, 32px padding.
+- Body copy uses Aeonik Fono 18px italic.
+- Include logo chips or duck icons anchored top-center; CTA links stay small uppercase with arrows.
+
+### Newsletter Module
+
+- Framed by a sunbeam-outline card.
+- Stack: input → checkbox list → CTA button.
+- Retain the dual-checkbox pattern (MotherDuck news + DuckDB newsletter) with both selected by default.
 
 ## Motion & Interaction
 
-- Global transition default: `all 0.3s ease`.
-- Reveal elements with fade-in + 8px upward motion when they enter viewport.
-- Loading states should feature looping duck animation or neutral skeleton gradients (`linear-gradient(90deg, #F3F3F3 25%, #FFFFFF 50%, #F3F3F3 75%)`).
+- Hover translation: `transform: translate(7px, -7px)` for CTAs/cards.
+- Scroll reveals: opacity 0 → 1 and `translateY(24px → 0)` over 240ms with 70ms stagger.
+- Dropdowns/accordions animate height ≤ 200ms with ease-in-out; no spring physics.
+- Loading uses duck GIFs or skeleton shimmer `linear-gradient(90deg, #F4EFEA 25%, #FFFFFF 50%, #F4EFEA 75%)`.
 
-## Iconography & Illustrations
+## Iconography & Illustration
 
-- Prioritize line icons with rounded stroke caps; stroke width 2px.
-- Duck mascots must stay proportionally consistent; never crop heads/feet.
-- Use gradients sparingly in icons; flat colors preferred unless highlighting key moments.
+- Icons use 2px strokes, beveled corners, and spot fills from the palette above.
+- Duck mascots remain upright, never mirrored, and always include full beak + feet.
+- ISO cubes, arrows, and magnifiers accompany headings; keep them SVG (no raster >200KB).
+- Gradients stay subtle (sunbeam → cream). Avoid neon or multicolor blends.
 
 ## Content Rules
 
-- Headlines: short, punchy, action-oriented; pair with playful supporting copy.
-- Body text should be conversational; integrate light humor where appropriate but keep technical accuracy.
-- Lists and feature callouts should leverage accent dots or duck-foot bullets for brand recognition.
+- Headlines stay uppercase, 3–5 words max. Subheads lean playful but land on a concrete benefit.
+- Body text references practitioner pains (data size, latency, onboarding) just like the live site.
+- CTAs describe the action plainly (“Try 21 Days Free”, “Learn More”, “Book a Demo”).
+- Persona lists (Software Engineers, Data Scientists, Data Engineers) pair one-liner pains with duck illustrations.
 
 ## Do / Don't
 
-- ✅ Lean into bold gradients for hero backgrounds and CTA strips.
-- ✅ Mix bright accents with ample neutral whitespace to avoid visual fatigue.
-- ✅ Keep interactive affordances obvious via color, motion, and shadows.
-- ✅ Use **sharp corners** everywhere - no rounded elements.
-- ✅ Use **bold black borders (3px)** for emphasis.
-- ✅ Ensure page background is `#F3F3F3`.
-- ❌ Introduce new color families (purple, deep blue, grayscale-heavy) without design approval.
-- ❌ Use rounded corners or border-radius anywhere.
-- ❌ Use thin borders for emphasis - use bold black borders instead.
-- ❌ Overuse animation; keep durations ≤ 400ms and ease-in-out curves.
-- ❌ Use arbitrary spacing values - always use spacing tokens.
+- ✅ Alternate cream, sunbeam, and sky sections to break long scrolls.
+- ✅ Keep 2px graphite outlines on every interactive surface.
+- ✅ Animate hover states with directional translation instead of color flashing.
+- ✅ Use uppercase hero + section titles; keep numerals monospace.
+- ❌ Introduce new color families (purple, neon gradients) without approval.
+- ❌ Remove outlines or add soft, blurry shadows.
+- ❌ Mix large rounded corners with square cards; the system relies on micro 2px radii.
+- ❌ Ship white background pages—cream shell is mandatory.
 
 ## Implementation Checklist
 
-1. Define tokens in a central `design-tokens.css` (or theme provider) once.
-2. Import tokens into Astro/React layers; never hardcode hex values outside token definitions.
-3. **Set all border-radius to 0** - no exceptions.
-4. **Use bold black borders (3px solid #000)** for emphasis.
-5. **Ensure page background is `#F3F3F3`**.
-6. **Use consistent spacing tokens** - check all padding/margin values.
-7. Validate responsive behavior at 375px, 768px, and 1280px.
-8. Verify contrast ratios for new combinations before merge.
-9. Include duck-themed assets only if optimized (SVG/Lottie) and lazy-loaded.
+1. Import the tokens above into `design-tokens.css`; never hardcode ad-hoc hex values.
+2. Set `body { background: var(--md-cream); font-family: var(--font-family-primary); }`.
+3. Apply header/eyebrow heights via the provided CSS variables; keep the eyebrow fixed and full-width.
+4. Ensure CTAs use uppercase Aeonik, 2px outlines, and the translate-on-hover interaction.
+5. Inputs/checkboxes must reuse the fog fill and sky focus color (`#2BA5FF`).
+6. Alternate section backgrounds + wavy separators at 375px, 768px, and 1280px breakpoints.
+7. Keep illustrations optimized SVG/Lottie with lazy-loading just like the production site.
+8. Confirm text contrast + focus indicators whenever sunbeam or sky is used as a background.
+9. Cache duck/grid assets and avoid raster exports larger than 200KB.

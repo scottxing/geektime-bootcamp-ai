@@ -48,71 +48,37 @@ export default function WeekModule({
     >
       {/* Header */}
       <div
-        className="p-2xl text-white"
+        className="text-white p-space-9"
         style={{
-          background: 'var(--md-gradient-sky)',
+          background: 'linear-gradient(135deg, var(--md-sky) 0%, var(--md-sky-strong) 100%)',
         }}
       >
-        <div className="flex items-center gap-md mb-lg">
-          <span
-            className="md-badge"
-            style={{
-              backgroundColor: 'rgba(255, 255, 255, 0.2)',
-              color: 'var(--md-white)',
-              fontSize: 'var(--font-small)',
-              fontWeight: 'var(--font-weight-semibold)',
-            }}
-          >
+        <div className="flex items-center gap-space-4 mb-space-6">
+          <span className="font-bold md-badge text-ui" style={{ backgroundColor: 'rgba(255, 255, 255, 0.2)', color: 'var(--md-cloud)' }}>
             第 {weekNumber} 周
           </span>
-
-          <span
-            className="text-small"
-            style={{ opacity: 0.9 }}
-          >
+          <span className="text-ui" style={{ opacity: 0.9 }}>
             ⏱ {estimatedHours} 小时
           </span>
         </div>
 
-        <h1
-          className="text-h1 font-bold"
-          style={{
-            marginTop: 0,
-            marginBottom: 'var(--space-sm)',
-          }}
-        >
+        <h1 className="font-bold text-h1 mb-space-3">
           {title}
         </h1>
-        <p
-          className="text-body"
-          style={{
-            opacity: 0.9,
-            marginTop: 0,
-            marginBottom: 0,
-            lineHeight: 'var(--line-height-body)',
-          }}
-        >
+        <p className="mb-0 text-body" style={{ opacity: 0.9, lineHeight: '1.6' }}>
           {subtitle}
         </p>
       </div>
 
       {/* Tabs */}
-      <div
-        className="border-b px-2xl"
-        style={{ borderBottom: '3px solid var(--md-black)' }}
-      >
-        <div className="flex gap-2xl">
+      <div className="border-b-2 border-graphite px-space-9">
+        <div className="flex gap-space-9">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`py-md text-small font-medium border-b-2 transition-all duration-200 ${
-                activeTab === tab.id ? '' : ''
-              }`}
-              style={{
-                borderColor: activeTab === tab.id ? 'var(--md-sky)' : 'transparent',
-                color: activeTab === tab.id ? 'var(--md-sky)' : 'var(--md-neutral-700)',
-              }}
+              className={`py-space-4 text-ui font-bold border-b-2 transition-all duration-200 ${activeTab === tab.id ? 'border-sky text-sky' : 'border-transparent text-slate'
+                }`}
             >
               {tab.label}
             </button>
@@ -121,7 +87,7 @@ export default function WeekModule({
       </div>
 
       {/* Content */}
-      <div className="p-2xl">
+      <div className="p-space-9">
         {activeTab === 'objectives' && (
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -130,27 +96,11 @@ export default function WeekModule({
             {objectives.map((objective, index) => (
               <div
                 key={index}
-                className="flex"
-                style={{
-                  gap: 'var(--space-md)',
-                  marginBottom: index < objectives.length - 1 ? 'var(--space-md)' : 0,
-                }}
+                className="flex gap-space-4"
+                style={{ marginBottom: index < objectives.length - 1 ? 'var(--space-4)' : 0 }}
               >
-                <span
-                  className="text-xl"
-                  style={{ color: 'var(--md-garden)' }}
-                >
-                  ✓
-                </span>
-                <p
-                  className="flex-1 text-body"
-                  style={{
-                    color: 'var(--md-neutral-900)',
-                    marginTop: 0,
-                    marginBottom: 0,
-                    lineHeight: 'var(--line-height-body)',
-                  }}
-                >
+                <span className="text-xl text-garden">✓</span>
+                <p className="flex-1 mb-0 text-body text-ink" style={{ lineHeight: '1.6' }}>
                   {objective}
                 </p>
               </div>
@@ -166,20 +116,10 @@ export default function WeekModule({
             {keyPoints.map((point, index) => (
               <div
                 key={index}
-                style={{
-                  marginBottom: index < keyPoints.length - 1 ? 'var(--space-md)' : 0,
-                }}
+                style={{ marginBottom: index < keyPoints.length - 1 ? 'var(--space-4)' : 0 }}
               >
                 <ExpandableSection title={point.title}>
-                  <p
-                    className="text-body"
-                    style={{
-                      color: 'var(--md-neutral-700)',
-                      marginTop: 0,
-                      marginBottom: 'var(--space-md)',
-                      lineHeight: 'var(--line-height-body)',
-                    }}
-                  >
+                  <p className="text-body text-slate mb-space-4" style={{ lineHeight: '1.6' }}>
                     {point.description}
                   </p>
                   {point.diagram && <AnimatedDiagram code={point.diagram} />}
@@ -197,27 +137,11 @@ export default function WeekModule({
             {practicalContent.map((content, index) => (
               <div
                 key={index}
-                className="flex"
-                style={{
-                  gap: 'var(--space-md)',
-                  marginBottom: index < practicalContent.length - 1 ? 'var(--space-md)' : 0,
-                }}
+                className="flex gap-space-4"
+                style={{ marginBottom: index < practicalContent.length - 1 ? 'var(--space-4)' : 0 }}
               >
-                <span
-                  className="font-bold"
-                  style={{ color: 'var(--md-watermelon)' }}
-                >
-                  {index + 1}.
-                </span>
-                <p
-                  className="flex-1 text-body"
-                  style={{
-                    color: 'var(--md-neutral-900)',
-                    marginTop: 0,
-                    marginBottom: 0,
-                    lineHeight: 'var(--line-height-body)',
-                  }}
-                >
+                <span className="font-bold text-watermelon">{index + 1}.</span>
+                <p className="flex-1 mb-0 text-body text-ink" style={{ lineHeight: '1.6' }}>
                   {content}
                 </p>
               </div>
@@ -228,33 +152,16 @@ export default function WeekModule({
 
       {/* Related Tools */}
       {relatedTools.length > 0 && (
-        <div
-          style={{
-            paddingLeft: 'var(--space-2xl)',
-            paddingRight: 'var(--space-2xl)',
-            paddingBottom: 'var(--space-2xl)',
-            paddingTop: 0,
-          }}
-        >
-          <h3
-            className="text-small font-semibold"
-            style={{
-              color: 'var(--md-neutral-700)',
-              marginTop: 0,
-              marginBottom: 'var(--space-md)',
-            }}
-          >
+        <div className="pt-0 px-space-9 pb-space-9">
+          <h3 className="font-bold text-ui text-slate mb-space-4">
             相关工具
           </h3>
-          <div
-            className="flex flex-wrap"
-            style={{ gap: 'var(--space-sm)' }}
-          >
+          <div className="flex flex-wrap gap-space-1">
             {relatedTools.map((tool) => (
               <a
                 key={tool}
                 href={getUrl(`tools/${tool}`)}
-                className="md-badge md-badge-sky transition-all duration-200 hover:scale-105"
+                className="transition-all duration-200 md-badge md-badge-sky hover:scale-105"
                 style={{
                   cursor: 'pointer',
                 }}

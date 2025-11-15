@@ -1,166 +1,137 @@
 /**
- * MotherDuck-inspired Design Tokens
+ * MotherDuck-inspired Design Tokens (2024 MotherDuck site parity)
  * 单一真实来源 - 所有设计变量定义
  */
 
 :root {
   /* ===== 颜色系统 ===== */
+  --md-cream: #F4EFEA;
+  /* page shell */
+  --md-sunbeam: #FFDE00;
+  /* eyebrow, promo strips */
+  --md-sunbeam-dark: #E3C300;
+  /* hover/pressed */
+  --md-sky: #6FC2FF;
+  /* primary CTA fill */
+  --md-sky-strong: #2BA5FF;
+  /* focus states */
+  --md-soft-blue: #EBF9FF;
+  /* sky sections */
+  --md-cloud: #FFFFFF;
+  /* cards */
+  --md-fog: #F8F8F7;
+  /* input backgrounds */
+  --md-ink: #383838;
+  /* primary text */
+  --md-slate: #A1A1A1;
+  /* secondary text */
+  --md-graphite: #000000;
+  /* structural strokes */
+  --md-grid-line: #E4D6C3;
+  /* graph-paper overlay */
+  --md-shadow: rgba(0, 0, 0, 0.08);
+  /* base hover shadow */
 
-  /* 品牌主色 */
-  --md-watermelon: #FF7169;   /* 主要 CTA、关键高亮 */
-  --md-sky: #6FC2FF;          /* 链接、交互状态 */
-  --md-garden: #16AA98;       /* 成功和积极横幅 */
-  --md-sun: #FFDE02;          /* 引人注目的徽章 */
+  /* Legacy aliases (保持旧代码兼容，逐步迁移) */
+  --md-neutral-900: var(--md-ink);
+  --md-neutral-700: var(--md-slate);
+  --md-neutral-300: #B9B9B9;
+  --md-neutral-100: var(--md-cream);
+  --md-white: var(--md-cloud);
+  --md-black: var(--md-graphite);
+  --md-sun: var(--md-sunbeam);
+  --md-watermelon: #FF7169;
 
-  /* 中性色 */
-  --md-neutral-900: #383838;  /* 主要文本 */
-  --md-neutral-700: #595959;  /* 次要文本 */
-  --md-neutral-300: #B9B9B9;  /* 边框、分隔线 */
-  --md-neutral-100: #F3F3F3;  /* 页面背景 */
-  --md-white: #FFFFFF;        /* 卡片、反向文本 */
-  --md-black: #000000;        /* 粗边框 */
+  --md-gradient-sunrise: linear-gradient(135deg, #FFDE00 0%, #F4EFEA 100%);
+  --md-gradient-hero: linear-gradient(135deg, rgba(255, 222, 0, 0.4) 0%, rgba(111, 194, 255, 0.25) 100%);
 
-  /* 渐变 */
-  --md-gradient-primary: linear-gradient(135deg, #FF7169 0%, #FFDE02 100%);
-  --md-gradient-sky: linear-gradient(135deg, #6FC2FF 0%, #16AA98 100%);
-  --md-gradient-hero: linear-gradient(135deg, rgba(255, 113, 105, 0.1) 0%, rgba(255, 222, 2, 0.1) 100%);
-
-  /* 语义色（基于品牌色） */
-  --md-success: var(--md-garden);
-  --md-warning: var(--md-sun);
-  --md-error: var(--md-watermelon);
-  --md-info: var(--md-sky);
-
-  /* 交互状态 */
-  --md-watermelon-hover: #E6665E;
-  --md-sky-hover: #5CAEE6;
-  --md-garden-hover: #139989;
+  /* ===== 品牌结构变量 ===== */
+  --header-mobile: 70px;
+  --header-desktop: 90px;
+  --eyebrow-mobile: 70px;
+  --eyebrow-desktop: 55px;
 
   /* ===== 字体系统 ===== */
-
-  --font-family-sans: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
-  --font-family-mono: "Aeonik Mono", "SFMono-Regular", Menlo, monospace;
-
-  /* 字体大小 */
-  --font-hero: 64px;
+  --font-family-primary: "Aeonik Mono", "Aeonik Fono", "Inter", "Helvetica Neue", sans-serif;
+  --font-family-alt: "Aeonik Fono", "Aeonik Mono", "Inter", sans-serif;
+  --font-hero: 72px;
   --font-h1: 48px;
-  --font-h2: 36px;
-  --font-h3: 24px;
+  --font-h2: 32px;
+  --font-h3: 18px;
   --font-body: 16px;
+  --font-ui: 14px;
   --font-small: 14px;
   --font-tiny: 12px;
+  --font-eyebrow: 12px;
 
-  /* 行高 */
-  --line-height-tight: 1.2;
-  --line-height-heading: 1.35;
-  --line-height-body: 1.6;
+  --line-height-hero: 1.2;
+  --line-height-heading: 1.25;
+  --line-height-body: 1.5;
 
-  /* 字重 */
-  --font-weight-normal: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
+  --font-weight-regular: 400;
   --font-weight-bold: 700;
 
-  /* ===== 间距系统 ===== */
-
+  /* ===== 间距系统（基于 8px 网格） ===== */
   --space-xs: 4px;
-  --space-sm: 8px;
+  --space-2: 8px;
+  --space-sm: 12px;
+  --space-3: 12px;
   --space-md: 16px;
+  --space-4: 16px;
+  --space-5: 20px;
   --space-lg: 24px;
+  --space-6: 24px;
+  --space-7: 32px;
   --space-xl: 32px;
+  --space-8: 40px;
   --space-2xl: 48px;
+  --space-9: 48px;
   --space-3xl: 64px;
-  --space-4xl: 96px;
+  --space-10: 64px;
+  --space-11: 80px;
+  --space-12: 96px;
+  --space-section: 96px;
 
-  /* 语义间距 */
-  --spacing-section: var(--space-4xl);      /* 96px - 章节间距 */
-  --spacing-block: var(--space-2xl);        /* 48px - 内容块间距 */
-  --spacing-related: var(--space-lg);       /* 24px - 相关元素间距 */
+  --container-max-width: 1600px;
 
-  /* 容器 */
-  --container-max-width: 1280px;
-  --container-padding-mobile: var(--space-lg);    /* 24px */
-  --container-padding-desktop: var(--space-2xl);  /* 48px */
+  /* ===== 边框与阴影 ===== */
+  --radius-micro: 2px;
+  --border-strong: 2px solid var(--md-graphite);
+  --border-bold: 3px solid var(--md-graphite);
+  --shadow-translate: 0 7px 0 rgba(0, 0, 0, 1);
 
-  /* 网格 */
-  --grid-columns: 12;
-  --grid-gutter: var(--space-lg);  /* 24px */
+  /* ===== 交互与动效 ===== */
+  --transition-quick: 120ms ease-in-out;
+  --transition-default: 240ms ease;
+  --translate-hover: translate(7px, -7px);
 
-  /* ===== 边框系统 ===== */
-
-  /* 无圆角 */
-  --radius-none: 0;
-
-  /* 边框样式 */
-  --border-thin: 1px solid var(--md-neutral-300);  /* 默认卡片边框 */
-  --border-bold: 3px solid var(--md-black);        /* 强调边框 */
-
-  /* ===== 阴影系统 ===== */
-
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.15);
-  --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.2);
-
-  /* 卡片默认阴影 */
-  --shadow-card: var(--shadow-md);
-  --shadow-card-hover: var(--shadow-lg);
-
-  /* ===== 动画与过渡 ===== */
-
-  --transition-default: all 0.3s ease;
-  --transition-fast: all 0.2s ease;
-  --transition-slow: all 0.4s ease;
-
-  --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-in: cubic-bezier(0.4, 0, 1, 1);
-  --ease-out: cubic-bezier(0, 0, 0.2, 1);
-  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
-
-  /* 动画持续时间 */
-  --duration-fast: 150ms;
-  --duration-normal: 300ms;
-  --duration-slow: 400ms;
-
-  /* ===== Z-index 层级 ===== */
-
-  --z-base: 0;
-  --z-dropdown: 1000;
-  --z-sticky: 1100;
-  --z-fixed: 1200;
-  --z-modal-backdrop: 1300;
-  --z-modal: 1400;
-  --z-popover: 1500;
-  --z-tooltip: 1600;
-
-  /* ===== 断点（用于 JS） ===== */
-
+  /* ===== 断点 ===== */
   --breakpoint-sm: 640px;
   --breakpoint-md: 768px;
   --breakpoint-lg: 1024px;
-  --breakpoint-xl: 1280px;
 }
 
-/* ===== 响应式字体大小 ===== */
+@media (max-width: 1024px) {
+  :root {
+    --font-hero: 64px;
+    --space-section: 96px;
+  }
+}
 
 @media (max-width: 768px) {
   :root {
     --font-hero: 48px;
-    --font-h1: 36px;
     --font-h2: 28px;
-    --font-h3: 20px;
-    --font-body: 15px;
-    --font-small: 13px;
+    --space-section: 72px;
+    --container-max-width: 100%;
   }
 }
 
 @media (max-width: 640px) {
   :root {
     --font-hero: 36px;
-    --font-h1: 28px;
     --font-h2: 24px;
-    --font-h3: 18px;
-    --spacing-section: var(--space-3xl);  /* 64px */
-    --spacing-block: var(--space-xl);     /* 32px */
+    --font-body: 15px;
+    --space-section: 56px;
   }
 }

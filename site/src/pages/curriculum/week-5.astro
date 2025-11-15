@@ -4,43 +4,27 @@ import WeekModule from '../../components/course/WeekModule';
 import { getWeekData } from '../../data/curriculum';
 import { getUrl } from '../../utils/url';
 
-const weekNumber = 5;
-const weekData = getWeekData(weekNumber);
+const weekData = getWeekData(5);
 if (!weekData) {
   return Astro.redirect('/curriculum');
 }
-
-const prevWeek = weekNumber > 1 ? weekNumber - 1 : null;
-const nextWeek = weekNumber < 8 ? weekNumber + 1 : null;
 ---
 
 <PageLayout
   title={`第${weekData.weekNumber}周: ${weekData.title} - 陈天 AI 训练营`}
   description={weekData.subtitle}
 >
-  <div class="section" style="background-color: var(--md-neutral-100); padding-top: var(--space-2xl); padding-bottom: var(--space-2xl);">
-    <div class="container-custom">
+  <div class="md-section md-section--sky">
+    <div class="md-container">
       <WeekModule {...weekData} client:load />
 
-      <div class="flex justify-between items-center style="margin-top: var(--space-xl);"">
-        {prevWeek ? (
-          <a href={getUrl(`curriculum/week-${prevWeek}`)} class="hover:underline" style="color: var(--md-sky); font-size: var(--font-body); line-height: var(--line-height-body);">
-            ← 第{prevWeek}周
-          </a>
-        ) : (
-          <a href={getUrl('curriculum')} class="hover:underline" style="color: var(--md-sky); font-size: var(--font-body); line-height: var(--line-height-body);">
-            ← 返回课程大纲
-          </a>
-        )}
-        {nextWeek ? (
-          <a href={getUrl(`curriculum/week-${nextWeek}`)} class="btn-primary">
-            下一周 →
-          </a>
-        ) : (
-          <a href={getUrl('curriculum')} class="btn-primary">
-            完成课程 ✓
-          </a>
-        )}
+      <div class="flex justify-between items-center mt-space-8">
+        <a href={getUrl('curriculum')} class="hover:underline text-body text-sky">
+          ← 返回课程大纲
+        </a>
+        <a href={getUrl('curriculum/week-6')} class="md-btn">
+          下一周 →
+        </a>
       </div>
     </div>
   </div>

@@ -34,7 +34,8 @@ export default function ToolShowcase({
     <div
       className={`flex flex-col ${
         reverse ? 'md:flex-row-reverse' : 'md:flex-row'
-      } gap-3xl items-center`}
+      } gap-space-12 items-center md-card`}
+      style={{ backgroundColor: 'var(--md-cloud)', padding: 'var(--space-10)' }}
     >
       {/* Image/Icon */}
       <ScrollReveal
@@ -93,101 +94,45 @@ export default function ToolShowcase({
         className="flex-1"
       >
         <div>
-          <div style={{ marginBottom: 'var(--space-lg)' }}>
-            <h2
-              className="text-h1 font-bold"
-              style={{
-                background: reverse
-                  ? 'var(--md-gradient-primary)'
-                  : 'var(--md-gradient-sky)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                marginTop: 0,
-                marginBottom: 'var(--space-sm)',
-              }}
-            >
+          <div className="mb-space-8">
+            <h2 className="text-h2 font-bold text-ink mb-space-4">
               {name}
             </h2>
 
-            <p
-              className="text-h3"
-              style={{
-                color: 'var(--md-sky)',
-                marginTop: 0,
-                marginBottom: 'var(--space-md)',
-                lineHeight: 'var(--line-height-body)',
-              }}
-            >
+            <p className="text-h3 text-sky mb-space-5" style={{ lineHeight: '1.4' }}>
               {tagline}
             </p>
 
-            <p
-              className="text-body"
-              style={{
-                color: 'var(--md-neutral-700)',
-                marginTop: 0,
-                marginBottom: 0,
-                lineHeight: 'var(--line-height-body)',
-              }}
-            >
+            <p className="text-body text-slate mb-0" style={{ lineHeight: '1.7', fontSize: '17px' }}>
               {description}
             </p>
           </div>
 
           {/* Features */}
-          <div style={{ marginBottom: 'var(--space-lg)' }}>
-            <h3
-              className="font-semibold text-body"
-              style={{
-                color: 'var(--md-neutral-900)',
-                marginTop: 0,
-                marginBottom: 'var(--space-md)',
-              }}
-            >
+          <div className="mb-space-8">
+            <h3 className="text-body font-bold text-ink mb-space-5">
               核心功能：
             </h3>
 
             {features.map((feature, index) => (
               <div
                 key={index}
-                style={{
-                  marginBottom: index < features.length - 1 ? 'var(--space-md)' : 0,
-                }}
+                style={{ marginBottom: index < features.length - 1 ? 'var(--space-5)' : 0 }}
               >
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="flex p-md transition-all duration-200 hover:translate-x-2"
-                  style={{
-                    backgroundColor: 'rgba(111, 194, 255, 0.05)',
-                    borderRadius: 0,
-                    gap: 'var(--space-md)',
-                  }}
+                  className="flex p-space-5 transition-all duration-200 hover:translate-x-2 gap-space-4"
+                  style={{ backgroundColor: 'var(--md-fog)', borderRadius: 0, border: '2px solid var(--md-graphite)' }}
                 >
-                  <span className="text-2xl">{feature.icon}</span>
+                  <span className="text-3xl">{feature.icon}</span>
                   <div className="flex-1">
-                    <h4
-                      className="font-semibold text-body"
-                      style={{
-                        color: 'var(--md-neutral-900)',
-                        marginTop: 0,
-                        marginBottom: 'var(--space-xs)',
-                      }}
-                    >
+                    <h4 className="text-body font-bold text-ink mb-space-3">
                       {feature.title}
                     </h4>
-                    <p
-                      className="text-small"
-                      style={{
-                        color: 'var(--md-neutral-700)',
-                        marginTop: 0,
-                        marginBottom: 0,
-                        lineHeight: 'var(--line-height-body)',
-                      }}
-                    >
+                    <p className="text-body text-slate mb-0" style={{ lineHeight: '1.6' }}>
                       {feature.description}
                     </p>
                   </div>
@@ -197,10 +142,10 @@ export default function ToolShowcase({
           </div>
 
           {/* CTA */}
-          <div style={{ marginTop: 'var(--space-lg)' }}>
+          <div className="mt-space-8">
             <a
               href={href || getUrl(`tools/${id}`)}
-              className="btn-secondary inline-flex"
+              className="md-btn md-btn-secondary inline-flex"
             >
               <span>深入了解</span>
               <ArrowRight size={16} />

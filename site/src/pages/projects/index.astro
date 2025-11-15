@@ -1,10 +1,10 @@
 ---
-import PageLayout from '../../layouts/PageLayout.astro';
-import PageHeader from '../../components/ui/PageHeader';
-import ProjectCard from '../../components/projects/ProjectCard';
-import ScrollReveal from '../../components/ui/ScrollReveal';
-import { projects } from '../../data/projects';
-import { getUrl } from '../../utils/url';
+import PageLayout from "../../layouts/PageLayout.astro";
+import PageHeader from "../../components/ui/PageHeader";
+import ProjectCard from "../../components/projects/ProjectCard";
+import ScrollReveal from "../../components/ui/ScrollReveal";
+import { projects } from "../../data/projects";
+import { getUrl } from "../../utils/url";
 ---
 
 <PageLayout
@@ -16,28 +16,33 @@ import { getUrl } from '../../utils/url';
     subtitle="从零到一，用 AI 构建真实项目"
     client:load
   >
-    <div class="flex flex-col sm:flex-row gap-md justify-center">
-      <a href="#projects" class="btn-primary"> 查看项目 </a>
-      <a href={getUrl('curriculum')} class="btn-secondary"> 返回课程 </a>
+    <div class="justify-center md-cta-stack">
+      <a href="#projects" class="md-btn"> 查看项目 </a>
+      <a href={getUrl("curriculum")} class="md-btn md-btn-secondary">
+        返回课程
+      </a>
     </div>
   </PageHeader>
 
-  <section class="section" style="background-color: var(--md-white);">
-    <div class="container-custom">
+  <section class="md-section">
+    <div class="md-container">
       <ScrollReveal client:load>
-        <h2 class="text-h1 font-bold text-center mb-md" style="color: var(--md-neutral-900);">
+        <h2 class="font-bold text-center text-h2 text-ink mb-space-5">
           循序渐进的项目设计
         </h2>
-        <p class="text-center mb-2xl max-w-2xl mx-auto" style="color: var(--md-neutral-700);">
-          从简单到复杂，每个项目都对应特定的学习目标，逐步提升你的 AI 辅助编程能力
+        <p
+          class="mx-auto max-w-2xl text-center mb-space-9 text-body text-slate"
+        >
+          从简单到复杂，每个项目都对应特定的学习目标，逐步提升你的 AI
+          辅助编程能力
         </p>
       </ScrollReveal>
 
-      <div class="grid grid-cols-1 gap-2xl mb-xl">
+      <div class="grid grid-cols-1 gap-space-2">
         {
           projects.map((project, index) => (
             <ScrollReveal delay={index * 0.1} client:load>
-              <div class="flex flex-col md:flex-row gap-8 items-start">
+              <div class="flex flex-col items-start md:flex-row gap-space-8">
                 <div class="md:w-2/3">
                   <ProjectCard
                     number={project.number}
@@ -51,21 +56,21 @@ import { getUrl } from '../../utils/url';
                     client:load
                   />
                 </div>
-                <div class="md:w-1/3 space-y-md">
-                  <div class="md-card" style="padding: var(--space-lg);">
-                    <h4 class="font-semibold mb-md" style="color: var(--md-neutral-900);">学习目标</h4>
-                    <ul class="space-y-sm text-small" style="color: var(--md-neutral-700);">
+                <div class="md:w-1/3 space-y-space-4">
+                  <div class="md-card p-space-6">
+                    <h4 class="font-semibold text-ink mb-space-4">学习目标</h4>
+                    <ul class="space-y-space-2 text-ui text-slate">
                       {project.objectives.slice(0, 3).map((obj) => (
-                        <li class="flex gap-sm">
-                          <span style="color: var(--md-sky);">•</span>
+                        <li class="flex gap-space-3">
+                          <span class="text-sky">•</span>
                           <span>{obj}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
-                  <div class="md-card text-center" style="padding: var(--space-md); background-color: rgba(111, 194, 255, 0.1);">
-                    <div class="text-small mb-xs" style="color: var(--md-neutral-700);">所属周次</div>
-                    <div class="text-h2 font-bold" style="color: var(--md-sky);">
+                  <div class="text-center md-card p-space-4 bg-softBlue">
+                    <div class="text-ui mb-space-2 text-slate">所属周次</div>
+                    <div class="font-bold text-h2 text-sky">
                       第 {project.weekNumber} 周
                     </div>
                   </div>
@@ -78,34 +83,36 @@ import { getUrl } from '../../utils/url';
     </div>
   </section>
 
-  <section class="section" style="background-color: var(--md-neutral-100);">
-    <div class="container-custom">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-2xl max-w-4xl mx-auto">
-        <div class="text-center md-card" style="padding: var(--space-xl);">
-          <div class="text-h1 font-bold mb-sm" style="color: var(--md-sky);">5</div>
-          <div style="color: var(--md-neutral-700);">个实战项目</div>
+  <section class="md-section md-section--sky">
+    <div class="md-container">
+      <div
+        class="grid grid-cols-1 mx-auto max-w-4xl md:grid-cols-3 gap-space-10"
+      >
+        <div class="text-center md-card p-space-8">
+          <div class="font-bold text-h2 mb-space-3 text-sky">5</div>
+          <div class="text-body text-slate">个实战项目</div>
         </div>
-        <div class="text-center md-card" style="padding: var(--space-xl);">
-          <div class="text-h1 font-bold mb-sm" style="color: var(--md-sky);">44+</div>
-          <div style="color: var(--md-neutral-700);">小时实践</div>
+        <div class="text-center md-card p-space-8">
+          <div class="font-bold text-h2 mb-space-3 text-sky">44+</div>
+          <div class="text-body text-slate">小时实践</div>
         </div>
-        <div class="text-center md-card" style="padding: var(--space-xl);">
-          <div class="text-h1 font-bold mb-sm" style="color: var(--md-sky);">10+</div>
-          <div style="color: var(--md-neutral-700);">项技术栈</div>
+        <div class="text-center md-card p-space-8">
+          <div class="font-bold text-h2 mb-space-3 text-sky">10+</div>
+          <div class="text-body text-slate">项技术栈</div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section" style="background-color: var(--md-white);">
-    <div class="container-custom text-center">
-      <h2 class="text-h1 font-bold mb-xl" style="color: var(--md-neutral-900);">
+  <section class="md-section">
+    <div class="text-center md-container">
+      <h2 class="font-bold text-h2 text-ink mb-space-8">
         准备好动手实践了吗？
       </h2>
-      <p class="text-h3 mb-xl max-w-2xl mx-auto" style="color: var(--md-neutral-700);">
+      <p class="mx-auto max-w-2xl text-h3 mb-space-8 text-body text-slate">
         从第一个项目开始，体验 AI 辅助编程的强大力量
       </p>
-      <a href={getUrl('projects/project-1')} class="btn-primary"> 开始第一个项目 </a>
+      <a href={getUrl("projects/project-1")} class="md-btn"> 开始第一个项目 </a>
     </div>
   </section>
 </PageLayout>

@@ -81,55 +81,54 @@ const materials = [
     subtitle="深入理解 AI 编程工具与最佳实践"
     client:load
   >
-    <a href="#materials" class="btn-primary">浏览资料</a>
-    <a href={getUrl("curriculum")} class="btn-secondary">返回课程</a>
+    <a href="#materials" class="md-btn">浏览资料</a>
+    <a href={getUrl("curriculum")} class="md-btn md-btn-secondary">返回课程</a>
   </PageHeader>
 
-  <section id="materials" class="section" style="background-color: var(--md-white);">
-    <div class="container-custom">
+  <section id="materials" class="md-section">
+    <div class="md-container">
       <ScrollReveal client:load>
-        <div class="text-center mb-2xl">
-          <h2 class="text-h1 font-bold mb-md" style="color: var(--md-neutral-900);">
+        <div class="text-center mb-space-9">
+          <h2 class="text-h2 font-bold text-ink mb-space-5">
             精选学习资料
           </h2>
-          <p class="max-w-2xl mx-auto" style="color: var(--md-neutral-700);">
+          <p class="max-w-2xl mx-auto text-body text-slate">
             深度技术文章、架构分析、工具对比，助你全面掌握 AI 辅助编程
           </p>
         </div>
       </ScrollReveal>
 
-      <div class="space-y-3xl">
+      <div class="space-y-section">
         {
           materials.map((category, idx) => (
             <ScrollReveal delay={idx * 0.1} client:load>
               <div>
-                <div class="flex items-center gap-md mb-lg">
-                  <category.icon size={32} className="text-sky" style={{ color: 'var(--md-sky)' }} />
+                <div class="flex items-center gap-space-4 mb-space-6">
+                  <category.icon size={32} style={{ color: 'var(--md-sky)' }} />
                   <div>
-                    <h3 class="text-h2 font-bold" style="color: var(--md-neutral-900);">
+                    <h3 class="text-h2 font-bold text-ink">
                       {category.category}
                     </h3>
-                    <p style="color: var(--md-neutral-700);">{category.description}</p>
+                    <p class="text-body text-slate">{category.description}</p>
                   </div>
                 </div>
 
                 {category.items.length > 0 ? (
-                  <div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-space-10">
                     {category.items.map((item) => (
                       <a
                         href={item.href}
-                        class="md-card md-card-interactive group"
-                        style="padding: var(--space-lg);"
+                        class="md-card md-card-interactive group p-space-6"
                       >
-                        <h4 class="text-h3 font-bold mb-sm group-hover:text-sky transition-colors" style="color: var(--md-neutral-900);">
+                        <h4 class="text-h3 font-bold mb-space-3 group-hover:text-sky transition-colors text-ink">
                           {item.title}
                         </h4>
-                        <p class="mb-md" style="color: var(--md-neutral-700);">
+                        <p class="mb-space-4 text-body text-slate">
                           {item.description}
                         </p>
-                        <div class="flex flex-wrap gap-sm">
+                        <div class="flex flex-wrap gap-space-3">
                           {item.tags.map((tag) => (
-                            <span class="md-badge md-badge-sky" style="font-size: var(--font-tiny);">
+                            <span class="md-badge text-eyebrow">
                               {tag}
                             </span>
                           ))}
@@ -138,7 +137,7 @@ const materials = [
                     ))}
                   </div>
                 ) : (
-                  <div class="md-card text-center" style="padding: var(--space-xl); background-color: var(--md-neutral-100); color: var(--md-neutral-700);">
+                  <div class="md-card text-center p-space-8 bg-cream text-slate">
                     即将推出更多精彩内容...
                   </div>
                 )}
@@ -150,18 +149,18 @@ const materials = [
     </div>
   </section>
 
-  <section class="section" style="background-color: var(--md-neutral-100);">
-    <div class="container-custom text-center">
+  <section class="md-section md-section--sky">
+    <div class="md-container text-center">
       <ScrollReveal client:load>
-        <h2 class="text-h1 font-bold mb-xl" style="color: var(--md-neutral-900);">
+        <h2 class="text-h2 font-bold text-ink mb-space-8">
           学以致用
         </h2>
-        <p class="text-h3 mb-xl max-w-2xl mx-auto" style="color: var(--md-neutral-700);">
+        <p class="text-h3 mb-space-8 max-w-2xl mx-auto text-body text-slate">
           理论结合实践，在课程和项目中应用所学知识
         </p>
-        <div class="flex flex-col sm:flex-row gap-md justify-center">
-          <a href={getUrl("curriculum")} class="btn-primary"> 开始学习课程 </a>
-          <a href={getUrl("projects")} class="btn-secondary"> 查看实战项目 </a>
+        <div class="md-cta-stack justify-center">
+          <a href={getUrl("curriculum")} class="md-btn"> 开始学习课程 </a>
+          <a href={getUrl("projects")} class="md-btn md-btn-secondary"> 查看实战项目 </a>
         </div>
       </ScrollReveal>
     </div>

@@ -33,7 +33,7 @@ export default function ToolDetail({ tool }: ToolDetailProps) {
             href={tool.officialWebsite}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-primary"
+            className="md-btn"
           >
             访问官网 →
           </a>
@@ -172,7 +172,7 @@ export default function ToolDetail({ tool }: ToolDetailProps) {
             在课程中深入学习 {tool.name}，掌握最前沿的 AI 辅助编程技能
           </p>
           <div className="flex flex-wrap gap-4">
-            <a href={getUrl('curriculum')} className="btn-secondary">
+            <a href={getUrl('curriculum')} className="md-btn md-btn-secondary">
               查看课程大纲
             </a>
             <a

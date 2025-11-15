@@ -13,24 +13,20 @@ export default function Hero({
   title,
   subtitle,
   children,
-  backgroundClass = 'bg-gradient-hero',
+  backgroundClass = 'bg-md-hero',
   backgroundImage,
 }: HeroProps) {
   const sectionStyle = backgroundImage
     ? {
-        backgroundImage: `linear-gradient(135deg, rgba(255, 113, 105, 0.15) 0%, rgba(255, 222, 2, 0.15) 100%), url(${backgroundImage})`,
+        backgroundImage: `linear-gradient(135deg, rgba(255, 222, 0, 0.4) 0%, rgba(111, 194, 255, 0.25) 100%), url(${backgroundImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
       }
     : {};
 
   return (
-    <section
-      className={`min-h-screen flex items-center justify-center ${backgroundClass}`}
-      style={sectionStyle}
-    >
-      <div className="container-custom text-center py-4xl">
+    <section className={`relative flex min-h-screen items-center ${backgroundClass}`} style={sectionStyle}>
+      <div className="md-container text-center" style={{ paddingTop: 'var(--space-section)', paddingBottom: 'var(--space-section)' }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -40,13 +36,10 @@ export default function Hero({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-hero font-bold"
+            className="text-hero font-bold uppercase tracking-[0.08em] mb-space-7"
             style={{
-              background: 'linear-gradient(135deg, #FF7169 0%, #FFDE02 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              marginBottom: 'var(--space-lg)',
+              color: 'var(--md-ink)',
+              textShadow: '2px 2px 4px rgba(255, 255, 255, 0.8), -1px -1px 2px rgba(255, 255, 255, 0.5)',
             }}
           >
             {title}
@@ -57,11 +50,12 @@ export default function Hero({
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-h3 max-w-3xl mx-auto"
+              className="mx-auto max-w-3xl text-body mb-space-9"
               style={{
-                color: 'var(--md-neutral-700)',
-                marginBottom: 'var(--space-2xl)',
-                lineHeight: 'var(--line-height-body)',
+                color: 'var(--md-ink)',
+                fontSize: '18px',
+                lineHeight: '1.6',
+                textShadow: '1px 1px 2px rgba(255, 255, 255, 0.8)',
               }}
             >
               {subtitle}
@@ -73,7 +67,7 @@ export default function Hero({
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-wrap gap-md justify-center items-center"
+              className="md-cta-stack justify-center"
             >
               {children}
             </motion.div>
@@ -85,32 +79,11 @@ export default function Hero({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.5 }}
-          className="absolute inset-0 pointer-events-none overflow-hidden"
+          className="pointer-events-none absolute inset-0 overflow-hidden"
           style={{ zIndex: -1 }}
         >
-          {/* 左上角装饰圆 */}
-          <div
-            className="absolute rounded-full blur-3xl"
-            style={{
-              top: '-10%',
-              left: '-5%',
-              width: '400px',
-              height: '400px',
-              background: 'radial-gradient(circle, rgba(111, 194, 255, 0.15) 0%, transparent 70%)',
-            }}
-          />
-
-          {/* 右下角装饰圆 */}
-          <div
-            className="absolute rounded-full blur-3xl"
-            style={{
-              bottom: '-10%',
-              right: '-5%',
-              width: '500px',
-              height: '500px',
-              background: 'radial-gradient(circle, rgba(255, 113, 105, 0.12) 0%, transparent 70%)',
-            }}
-          />
+          <div className="absolute -left-10 -top-10 h-80 w-80 rounded-full bg-[radial-gradient(circle,rgba(111,194,255,0.2)_0%,transparent_70%)] blur-3xl" />
+          <div className="absolute -bottom-20 -right-10 h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,rgba(255,222,0,0.2)_0%,transparent_70%)] blur-3xl" />
         </motion.div>
       </div>
     </section>

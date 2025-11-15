@@ -272,7 +272,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
           <div className="flex flex-wrap gap-4 justify-center">
             <a
               href={getUrl(`curriculum/week-${project.weekNumber}`)}
-              className="btn-secondary"
+              className="md-btn md-btn-secondary"
             >
               前往第 {project.weekNumber} 周
             </a>

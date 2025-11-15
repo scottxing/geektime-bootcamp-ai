@@ -11,12 +11,12 @@ if (!project) {
 ---
 
 <PageLayout title={`${project.title} - 陈天 AI 训练营`} description={project.subtitle}>
-  <div class="section min-h-screen" style="background-color: var(--md-neutral-100); padding-top: var(--space-2xl); padding-bottom: var(--space-2xl);">
-    <div class="container-custom">
+  <div class="md-section md-section--sky min-h-screen">
+    <div class="md-container">
       <ProjectDetail project={project} client:load />
 
-      <div class="style="margin-top: var(--space-xl);" text-center">
-        <a href={getUrl('projects')} class="hover:underline" style="color: var(--md-sky); font-size: var(--font-body); line-height: var(--line-height-body);">
+      <div class="mt-space-8 text-center">
+        <a href={getUrl('projects')} class="hover:underline text-body text-sky">
           ← 返回所有项目
         </a>
       </div>

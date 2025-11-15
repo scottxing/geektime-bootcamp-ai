@@ -13,7 +13,7 @@ const { title, description } = Astro.props;
 
 <BaseLayout title={title} description={description}>
   <Navigation client:load />
-  <main class="pt-16">
+  <main style="padding-top: var(--header-desktop);">
     <slot />
   </main>
   <Footer client:load />

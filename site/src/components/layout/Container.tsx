@@ -7,7 +7,7 @@ interface ContainerProps {
 
 export default function Container({ children, className = '' }: ContainerProps) {
   return (
-    <div className={`container-custom ${className}`}>
+    <div className={`md-container ${className}`}>
       {children}
     </div>
   );

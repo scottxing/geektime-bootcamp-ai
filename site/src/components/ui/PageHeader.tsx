@@ -10,15 +10,14 @@ interface PageHeaderProps {
 export default function PageHeader({ title, subtitle, children }: PageHeaderProps) {
   return (
     <section
-      className="border-b"
+      className="border-b-2 border-graphite"
       style={{
-        backgroundColor: 'var(--md-white)',
-        borderBottom: '3px solid var(--md-black)',
-        paddingTop: 'var(--space-2xl)',
-        paddingBottom: 'var(--space-3xl)',
+        backgroundColor: 'var(--md-grid-line)',
+        paddingTop: 'var(--space-12)',
+        paddingBottom: 'var(--space-12)',
       }}
     >
-      <div className="container-custom">
+      <div className="md-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -26,16 +25,9 @@ export default function PageHeader({ title, subtitle, children }: PageHeaderProp
           className="max-w-4xl"
         >
           <h1
-            className="font-bold"
+            className="font-bold text-h2 text-ink mb-space-6"
             style={{
-              fontSize: 'var(--font-h1)',
               lineHeight: 'var(--line-height-heading)',
-              marginTop: 0,
-              marginBottom: 'var(--space-lg)',
-              background: 'linear-gradient(135deg, #FF7169 0%, #6FC2FF 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
             }}
           >
             {title}
@@ -46,12 +38,10 @@ export default function PageHeader({ title, subtitle, children }: PageHeaderProp
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-body text-slate mb-space-8"
               style={{
-                fontSize: 'var(--font-h3)',
-                lineHeight: 'var(--line-height-body)',
-                color: 'var(--md-neutral-700)',
-                marginTop: 0,
-                marginBottom: 'var(--space-xl)',
+                fontSize: '18px',
+                lineHeight: '1.6',
               }}
             >
               {subtitle}
@@ -63,8 +53,7 @@ export default function PageHeader({ title, subtitle, children }: PageHeaderProp
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="flex flex-wrap"
-              style={{ gap: 'var(--space-md)' }}
+              className="flex flex-wrap gap-space-4"
             >
               {children}
             </motion.div>

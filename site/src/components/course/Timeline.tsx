@@ -15,24 +15,19 @@ interface TimelineProps {
 
 export default function Timeline({ items }: TimelineProps) {
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="mx-auto max-w-4xl">
       {items.map((item, index) => (
         <ScrollReveal key={item.weekNumber} delay={index * 0.1}>
-          <div className="relative flex" style={{ gap: 'var(--space-lg)', paddingBottom: index < items.length - 1 ? 'var(--space-3xl)' : 0 }}>
+          <div className="flex relative gap-space-1" style={{ paddingBottom: index < items.length - 1 ? 'var(--space-10)' : 0 }}>
             {/* Timeline line */}
-            <div className="relative flex flex-col items-center">
+            <div className="flex relative flex-col items-center">
               <motion.div
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 + 0.2 }}
-                className="z-10"
-                style={{
-                  width: '16px',
-                  height: '16px',
-                  borderRadius: 0,
-                  backgroundColor: 'var(--md-sky)',
-                }}
+                className="z-10 w-4 h-4 bg-sky"
+                style={{ borderRadius: 0 }}
               />
               {index < items.length - 1 && (
                 <motion.div
@@ -40,10 +35,8 @@ export default function Timeline({ items }: TimelineProps) {
                   whileInView={{ height: '100%' }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 + 0.3, duration: 0.5 }}
-                  className="absolute"
+                  className="absolute w-0.5 top-4"
                   style={{
-                    width: '2px',
-                    top: '16px',
                     background: 'linear-gradient(to bottom, var(--md-sky), transparent)',
                   }}
                 />
@@ -54,35 +47,18 @@ export default function Timeline({ items }: TimelineProps) {
             <div className="flex-1 group">
               <a
                 href={item.href || getUrl(`curriculum/week-${item.weekNumber}`)}
-                className="block md-card md-card-interactive"
-                style={{ padding: 'var(--space-lg)' }}
+                className="block md-card md-card-interactive p-space-6"
               >
-                <div className="flex items-center" style={{ gap: 'var(--space-md)', marginBottom: 'var(--space-sm)' }}>
-                  <span className="font-semibold" style={{ fontSize: 'var(--font-small)', color: 'var(--md-sky)' }}>
+                <div className="flex items-center gap-space-4 mb-space-3">
+                  <span className="font-bold text-ui text-sky">
                     第 {item.weekNumber} 周
                   </span>
-                  <span style={{ fontSize: 'var(--font-tiny)', color: 'var(--md-neutral-700)' }}>→</span>
+                  <span className="text-eyebrow text-slate">→</span>
                 </div>
-                <h3
-                  className="font-bold group-hover:text-sky transition-colors"
-                  style={{
-                    fontSize: 'var(--font-h3)',
-                    color: 'var(--md-neutral-900)',
-                    marginTop: 0,
-                    marginBottom: 'var(--space-sm)',
-                  }}
-                >
+                <h3 className="font-bold transition-colors text-h3 text-ink mb-space-3 group-hover:text-sky">
                   {item.title}
                 </h3>
-                <p
-                  style={{
-                    fontSize: 'var(--font-body)',
-                    lineHeight: 'var(--line-height-body)',
-                    color: 'var(--md-neutral-700)',
-                    marginTop: 0,
-                    marginBottom: 0,
-                  }}
-                >
+                <p className="mb-0 text-body text-slate" style={{ lineHeight: '1.6' }}>
                   {item.subtitle}
                 </p>
               </a>
