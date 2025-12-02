@@ -1,5 +1,6 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import { ChevronLeft, ChevronRight, Maximize2, Minimize2, X } from 'lucide-react';
+import { getImageUrl } from '../../utils/url';
 
 export interface Slide {
   image: string;
@@ -12,6 +13,15 @@ interface PresentationCarouselProps {
   title?: string;
   autoPlay?: boolean;
   autoPlayInterval?: number;
+}
+
+function resolveImageUrl(imagePath: string): string {
+  // If it's already an absolute URL (http/https), return as-is
+  if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
+    return imagePath;
+  }
+  // Use the shared getImageUrl utility
+  return getImageUrl(imagePath);
 }
 
 export default function PresentationCarousel({
@@ -95,7 +105,15 @@ export default function PresentationCarousel({
     return () => clearInterval(interval);
   }, [isPlaying, autoPlayInterval, goToNext]);
 
-  const currentSlide = slides[currentIndex];
+  // Process slides to resolve image URLs
+  const processedSlides = useMemo(() => {
+    return slides.map(slide => ({
+      ...slide,
+      image: resolveImageUrl(slide.image),
+    }));
+  }, [slides]);
+
+  const currentSlide = processedSlides[currentIndex];
 
   return (
     <div
@@ -178,7 +196,7 @@ export default function PresentationCarousel({
 
       {/* Thumbnail navigation */}
       <div className="carousel-thumbnails">
-        {slides.map((slide, index) => (
+        {processedSlides.map((slide, index) => (
           <button
             key={index}
             className={`thumbnail ${index === currentIndex ? 'active' : ''}`}
